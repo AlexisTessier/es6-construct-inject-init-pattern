@@ -57,8 +57,10 @@ let greenLemonMan = new LemonMan({color:"green"});
 
 //For testing purpose, or more control over dependencies, inject custom dependencies
 greenLemonMan.inject({
-	logger : function(){
-		//log stuff if you want
+	logger : {
+		log : function(){
+			//log stuff
+		}
 	}
 });
 //or inject the default dependencies for simple use
@@ -72,5 +74,5 @@ greenLemonMan.describe();
 
 //You can do all that stuff using chaining
 
-new LemonMan({name:"Jack Smith"}).inject().init();
+new LemonMan({name:"Jack Smith"}).inject().init().describe();
 ```
