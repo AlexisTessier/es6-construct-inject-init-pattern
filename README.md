@@ -34,9 +34,11 @@ class LemonMan{
 		return this;
 	}
 	
-	//Then, the init method. Return this to and can make complex initilization action. Destructuring assignement is not mandatory.
+	//Then, the init method. Return this to and can make complex initilization action, and access to the instance dependencies. Destructuring assignement is not mandatory.
 	init(){
-		this.description = this.name === "John doe" ? "but he has no real name" : "and his name is "+this.name;
+		this.description = this.name === "John Doe" ? "but he has no real name" : "and his name is "+this.name;
+		
+		this.logger.log("Hello...");
 		
 		return this;
 	}
@@ -45,8 +47,30 @@ class LemonMan{
 		this.logger.log("He is "+this.color+" "+this.description);
 	}
 }
+```
 
-let greenLemonMan = new LemonMan({color:"green"}).inject().init();
+###Use it
 
+```javascript
+//instantiate, using parameters if you want
+let greenLemonMan = new LemonMan({color:"green"});
+
+//For testing purpose, or more control over dependencies, inject custom dependencies
+greenLemonMan.inject({
+	logger : function(){
+		//log stuff if you want
+	}
+});
+//or inject the default dependencies for simple use
+greenLemonMan.inject();
+
+//init the instance (You can because dependencies were yet injected)
+greenLemonMan.init();
+
+//Then use the instance
 greenLemonMan.describe();
+
+//You can do all that stuff using chaining
+
+new LemonMan({name:"Jack Smith"}).inject().init();
 ```
