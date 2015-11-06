@@ -3,7 +3,7 @@ A pattern about how to write classes in ES6, and deal with dependency injection.
 
 ##Note
 
-This pattern in absolutely not a standard way to do things, and I'm still experiment it, and change it day to days. But it seems to work well for now, so I wrote it here to keep a trace of it.
+This pattern is absolutely not a standard way to do things, and I'm still experiment it, and change it day to days. But it seems to work well for now, so I wrote it here to keep a trace of it.
 
 ##Example
 
