@@ -34,7 +34,7 @@ class LemonMan{
 		return this;
 	}
 	
-	//Then, the init method. Return this to and can make complex initilization action, and access to the instance dependencies. Destructuring assignement is not mandatory.
+	//Then, the init method. Return this too and can make complex initilization action, and access to the instance dependencies. Destructuring assignement is not mandatory.
 	init(){
 		this.description = this.name === "John Doe" ? "but he has no real name" : "and his name is "+this.name;
 		
