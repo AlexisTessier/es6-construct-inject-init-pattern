@@ -11,7 +11,7 @@ This pattern is absolutely not a standard way to do things, and I'm still experi
 ```javascript
 
 class LemonMan{
-	//First, the constructor. It has to use full advantage of destructuring assignement. Just use to set start parameters without making any complex transformation. Constructor parameters must be literals.
+	//First, the constructor. It has to use full advantage of destructuring assignement. Just use to set start parameters without doing any complex transformation. Constructor parameters must be literals.
 	constructor({
 		name= "",
 		color= "yellow"
@@ -34,7 +34,7 @@ class LemonMan{
 		return this;
 	}
 	
-	//Then, the init method. Return this too and can make complex initilization action, and access to the instance dependencies. Destructuring assignement is not mandatory.
+	//Then, the init method. Return this too and can do complex initilization action, and access to the instance dependencies. Destructuring assignement is not mandatory.
 	init(){
 		this.description = this.name === "John Doe" ? "but he has no real name" : "and his name is "+this.name;
 		
