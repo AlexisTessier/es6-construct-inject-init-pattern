@@ -7,6 +7,12 @@ This pattern is absolutely not a standard way to do things, and I'm still experi
 
 ##Example
 
+[Demo here](https://github.com/AlexisTessier/es6-draft)
+
+Clone the project, do npm install, gulp watch then node test-construct-inject-init
+
+[Source file](https://github.com/AlexisTessier/es6-draft/blob/master/sources/construct-inject-init.js)
+
 ###Define the class
 ```javascript
 
@@ -15,17 +21,17 @@ class LemonMan{
 	constructor({
 		name= "",
 		color= "yellow"
-    } = {}){
-    	//It has to use full advantage of destructuring assignement and default value.
-    	//Eventually it can implement assertions about type of each parameter
-    	assert(typeof name === "string");
-    	assert(typeof color === "string");
+	} = {}){
+		//It has to use full advantage of destructuring assignement and default value.
+		//Eventually it can implement assertions about type of each parameter
+		assert(typeof name === "string");
+		assert(typeof color === "string");
 
-    	//use a param object to save the object parameters
-    	this.param = {
-    		name,
-    		color
-    	};
+		//use a param object to save the object parameters
+		this.param = {
+			name,
+			color
+		};
 	}
 	//Then, the inject method. Also use destructuring assignement, but to set the instance dependencies. Each dependency must have a default value. 
 	inject({
@@ -101,4 +107,44 @@ greenLemonMan.describe();
 //You can do all that stuff using chaining
 
 new LemonMan({name:"Jack Smith"}).inject().init().describe();
+```
+###Working with extends
+```javascript
+
+class BigLemonMan extends LemonMan{
+	constructor({
+		level= 0
+	} = {}){
+		assert(typeof level === "number");
+
+		super(...arguments);
+
+		Object.assign(this.param, {
+			level
+		});
+	}
+
+	inject({
+		objectConstructor = Object
+	} = {}){
+		super.inject(...arguments);
+
+		Object.assign(this, {
+			objectConstructor
+		});
+
+		return this;
+	}
+
+	init(){
+		super.init();
+		
+		this.object = new this.objectConstructor();
+
+		this.description += ". Also, his object is an instance of "+this.object.constructor.name+".";
+
+		return this;
+	}
+}
+
 ```
