@@ -11,38 +11,64 @@ This pattern is absolutely not a standard way to do things, and I'm still experi
 ```javascript
 
 class LemonMan{
-	//First, the constructor. It has to use full advantage of destructuring assignement. Just use to set start parameters without doing any complex transformation. Constructor parameters must be literals.
+	//First, the constructor.
 	constructor({
 		name= "",
 		color= "yellow"
     } = {}){
-    
-		this.name = name.length > 0 ? name : "John Doe";
-		this.color = color;
+    	//It has to use full advantage of destructuring assignement and default value.
+    	//Eventually it can implement assertions about type of each parameter
+    	assert(typeof name === "string");
+    	assert(typeof color === "string");
+
+    	//use a param object to save the object parameters
+    	this.param = {
+    		name,
+    		color
+    	};
 	}
-	//Then, the inject method. Also use destructuring assignement, but to set the instance dependencies. Each dependency must have a default value. Plus, inject method must return this.
+	//Then, the inject method. Also use destructuring assignement, but to set the instance dependencies. Each dependency must have a default value. 
 	inject({
-		logger = console,
-		context = window
+		logger = console
 	} = {}){
+		//Eventually it can implement assertions to describe the dependencies
+		assert(typeof logger === 'object');
+		assert(typeof logger.log === 'function');
 	
 		//Use the assign method (or a polyfill) to set dependencies
 		Object.assign(this, {
-			logger, context
+			logger
 		});
 		
+		//Plus, inject method must return this.
 		return this;
 	}
 	
-	//Then, the init method. Return this too and can do complex initilization action, and access to the instance dependencies. Destructuring assignement is not mandatory.
+	//Then, the init method. Accept no parameters
 	init(){
+		//Do more complex stuff
 		this.description = this.name === "John Doe" ? "but he has no real name" : "and his name is "+this.name;
 		
+		//Dependencies can be used
 		this.logger.log("Hello...");
 		
+		//Return this too
 		return this;
 	}
+
+	//Then define getters, setters, and methods
+	/*===============*/
 	
+	get name(){
+		return this.param.name.length > 0 ? this.param.name : "John Doe"
+	}
+
+	get color(){
+		return this.param.color;
+	}
+
+	/*===============*/
+
 	describe(){
 		this.logger.log("He is "+this.color+" "+this.description);
 	}
