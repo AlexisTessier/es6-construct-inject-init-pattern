@@ -11,7 +11,7 @@ class Human{
 	}
 
 	//Avoid using default dependencies
-	//The default factory (see later) set them for you
+	//The default factory set them for you
 	inject({
 		logger
 	}){
@@ -37,4 +37,4 @@ class Human{
 	talk(){
 		this.logger.log('woof, I am '+this.name+' and I am '+this.age+' years old.');
 	}
-}	
+}
