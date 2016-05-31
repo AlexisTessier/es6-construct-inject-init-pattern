@@ -2,6 +2,8 @@
 // or gravity-falls/class/character.js
 // or something like that, write it in the documentation 
 
+import assert from 'assert'
+
 class Character{
 	constructor({
 		name,
