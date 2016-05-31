@@ -1,4 +1,8 @@
-class Human{
+// gravity-falls/index.js
+// or gravity-falls/class/character.js
+// or something like that, write it in the documentation 
+
+class Character{
 	constructor({
 		name,
 		age = 0
@@ -35,6 +39,6 @@ class Human{
 
 	//then implement others method
 	talk(){
-		this.logger.log('woof, I am '+this.name+' and I am '+this.age+' years old.');
+		this.logger.log('Hello, I am '+this.name+' and I am '+this.age+'.');
 	}
 }

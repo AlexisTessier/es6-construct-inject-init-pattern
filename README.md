@@ -43,11 +43,11 @@ Injected dependencies are values that could have a sense even in a more global c
 ###Example
 
 - [Class definition](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/class-definition.js)
-- [Default dependencies definition (not written yet)](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/default-dependencies-definition.js)
-- [Basic usage (not written yet)](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/basic-usage.js)
-- [Default factory definition (not written yet)](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/default-factory-definition.js)
-- [Factory usage (not written yet)](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/factory-usage.js)
-- [Custom factory usage (not written yet)](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/custom-factory-usage.js)
+- [Default dependencies definition](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/default-dependencies-definition.js)
+- [Basic usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/basic-usage.js)
+- [Default factory definition](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/default-factory-definition.js)
+- [Factory usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/factory-usage.js)
+- [Custom factory usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/custom-factory-usage.js)
 - [Usage with inheritance (not written yet)](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/usage-with-inheritance.js)
 
 ###Concrete implementation examples
