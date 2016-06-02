@@ -1,6 +1,6 @@
 # Construct Inject Init
 
-A pattern about how to write classes, and deal with dependency injection. Actually, it's more an implementation style guide.
+A pattern about how to write classes, and deal with dependency injection. Actually, it's more an implementation guideline.
 
 ***Author note:***
 *I'm still experimenting this pattern.*
