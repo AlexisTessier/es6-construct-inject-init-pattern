@@ -142,7 +142,16 @@ Note that having to manually inject dependencies is not convenient a lot for an 
 Providing a default behaviour is important, and if it can be overrided it's for the best.
 
 ```javascript
+// gravity-falls/factory.js
+// or gravity-falls/factory/character.js
+// or something like that, write it in the documentation 
 
+import Character from './index'
+import characterInjection from './injection/character'
+
+export default function characterDefaultFactory() {
+	return new Character(...arguments).inject(characterInjection);
+}
 ```
 
 - [Factory usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/factory-usage.js)
