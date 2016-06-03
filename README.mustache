@@ -54,86 +54,19 @@ Injected dependencies are values that could have a sense even in a more global c
 - [Class definition](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/class-definition.js)
 
 ```javascript
-// gravity-falls/index.js
-// or gravity-falls/class/character.js
-// or something like that, write it in the documentation 
-
-import assert from 'assert'
-
-class Character{
-	constructor({
-		name,
-		age = 0
-	} = {}) {
-
-		Object.assign(this, {
-			name,
-			age
-		});
-	}
-
-	//Avoid using default dependencies
-	//The default factory set them for you
-	inject({
-		logger
-	}){
-		//Ensure that each injected dependency implement the needed interface
-		assert(typeof logger === 'object');
-		assert(typeof logger.log === 'function');
-
-		Object.assign(this, {
-			logger
-		});
-
-		//Don't forget to return this instance
-		return this;
-	}
-
-	//init(){
-		//No need to implement a init method in this example
-		//But if you have to do loud computation, don't forget to return this instance
-		//return this;
-	//}
-
-	//then implement others method
-	talk(){
-		this.logger.log('Hello, I am '+this.name+' and I am '+this.age+'.');
-	}
-}
+{{& example.classDefinition }}
 ```
 
 - [Default dependencies definition](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/default-dependencies-definition.js)
 
 ```javascript
-// gravity-falls/injection/character/index.js
-import logger from './logger'
-
-export default {
-	logger
-}
-
-/*------------------------*/
-
-// gravity-falls/injection/character/logger.js
-export default {
-	log: function loggerLog{
-		console.log(...arguments);
-	}
-}
+{{& example.defaultDependenciesDefinition }}
 ```
 
 - [Basic usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/basic-usage.js)
 
 ```javascript
-import Character from 'gravity-falls'
-import characterInjection from 'gravity-falls/injection/character'
-
-let brother = new Character({
-	name: "Dipper",
-	age: 12
-}).inject(characterInjection);
-
-brother.talk(); //'Hello, I am Dipper and I am 12.'
+{{& example.basicUsage }}
 ```
 Note that having to manually inject dependencies is not convenient a lot for an user... it should be done just in factories methods.
 
@@ -142,20 +75,15 @@ Note that having to manually inject dependencies is not convenient a lot for an 
 Providing a default behaviour is important, and if it can be overrided it's for the best.
 
 ```javascript
-
+{{& example.defaultFactoryUsage }}
 ```
 
 - [Factory usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/factory-usage.js)
 
+Using a factory is more convenient than inject manually the dependencies.
+
 ```javascript
-import Character from 'gravity-falls/factory'
-
-let sister = Character({
-	name: "Mabel",
-	age: 12
-});
-
-sister.talk(); //'Hello, I am Mabel and I am 12.'
+{{& example.factoryUsage }}
 ```
 
 - [Testing purpose](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/testing-purpose.js)
@@ -163,79 +91,21 @@ sister.talk(); //'Hello, I am Mabel and I am 12.'
 Now, imagine you would test the talk method and ensure that the message logged is correct, you can use a [mock object](https://en.wikipedia.org/wiki/Mock_object) instead of the default logger and ensure that its log method is correctly called.
 
 ```javascript
-
+{{& example.testingPurpose }}
 ```
 
 - [Custom factory usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/custom-factory-usage.js)
 
-Also, you could just want to change the behaviour (the example just double the log, but a real use case could be to inject a logger which write the logs in file... or whatever...).
+Also, you could just want to change the behaviour of the class (the following example just double the log, but a real use case could be to inject a logger which write the logs in file... or whatever...).
 
 ```javascript
-import Character from 'gravity-falls'
-
-function TweenBrothers() {
-	return new Character(...arguments).inject({
-		logger: {
-			log: () => {
-				console.log(...arguments);
-				console.log(...arguments);
-			}
-		}
-	});
-}
-
-let uncles = TweenBrothers({
-	name: 'Stanley/Stanford',
-	age: 'old'
-});
-
-uncles.talk(); //'Hello, I am Stanley/Stanford and I am old.'
+{{& example.customFactoryUsage }}
 ```
 
 - [Usage with inheritance](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/usage-with-inheritance.js)
 
 ```javascript
-import Character from 'gravity-falls'
-
-import assert from 'assert'
-
-class GeometricCharacter extends Character {
-	constructor({
-		shape = 'triangle',
-		color = 'yellow'
-	} = {}) {
-		super(...arguments);
-
-		Object.assign(this, {
-			color
-		});
-	}
-
-	/*
-	inject({
-		injectedDependency
-	}){
-		super.inject(...arguments);
-
-		assert(typeof injectedDependency === 'object');
-		assert(typeof injectedDependency.method === 'function');
-
-		Object.assign(this, {
-			injectedDependency
-		});
-
-		return this;
-	}
-	*/
-
-	/*
-	init(){
-		super.init();
-
-		return this;
-	}
-	*/
-}
+{{& example.usageWithInheritance }}
 ```
 
 ###Concrete implementation examples
