@@ -53,6 +53,8 @@ Injected dependencies are values that could have a sense even in a more global c
 
 - [Class definition](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/class-definition.js)
 
+Let's define a class with a talk method which need a logger object to log a message.
+
 ```javascript
 // gravity-falls/index.js
 // or gravity-falls/class/character.js
@@ -104,6 +106,8 @@ class Character{
 
 - [Default dependencies definition](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/default-dependencies-definition.js)
 
+Providing a default behaviour is important.
+
 ```javascript
 // gravity-falls/injection/character/index.js
 import logger from './logger'
@@ -124,6 +128,8 @@ export default {
 
 - [Basic usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/basic-usage.js)
 
+Note that having to manually inject dependencies is not convenient a lot for an user... it should be done just in factories methods.
+
 ```javascript
 import Character from 'gravity-falls'
 import characterInjection from 'gravity-falls/injection/character'
@@ -135,11 +141,10 @@ let brother = new Character({
 
 brother.talk(); //'Hello, I am Dipper and I am 12.'
 ```
-Note that having to manually inject dependencies is not convenient a lot for an user... it should be done just in factories methods.
 
 - [Default factory definition](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/default-factory-definition.js)
 
-Providing a default behaviour is important, and if it can be overrided it's for the best.
+Using a factory is more convenient than manually inject the dependencies.
 
 ```javascript
 // gravity-falls/factory.js
@@ -155,8 +160,6 @@ export default function characterDefaultFactory() {
 ```
 
 - [Factory usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/factory-usage.js)
-
-Using a factory is more convenient than inject manually the dependencies.
 
 ```javascript
 import Character from 'gravity-falls/factory'
@@ -207,7 +210,7 @@ console.log('Character test suite passed');
 
 - [Custom factory usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/custom-factory-usage.js)
 
-Also, you could just want to change the behaviour of the class (the following example just double the log, but a real use case could be to inject a logger which write the logs in file... or whatever...).
+Also, you could just want to change the behaviour of the class (the following example simply repeat the log, but a real use case could be to inject a logger which write the logs in files... or whatever...).
 
 ```javascript
 import Character from 'gravity-falls'
