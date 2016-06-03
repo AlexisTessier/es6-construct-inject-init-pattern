@@ -187,7 +187,7 @@ console.log('Character test suite');
 
 	assert(loggerMock.history.length === 0);
 
-	console.log('\tIf a Character talk,, he must say "Hello", his name and his age.');
+	console.log('If a Character talk, he must say "Hello", his name and his age.');
 	prettyGirl.talk();
 
 	assert(loggerMock.history.length === 1);
