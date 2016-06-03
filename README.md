@@ -147,6 +147,8 @@ Providing a default behaviour is important, and if it can be overrided it's for 
 
 - [Factory usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/factory-usage.js)
 
+Using a factory is more convenient than inject manually the dependencies.
+
 ```javascript
 import Character from 'gravity-falls/factory'
 
@@ -163,12 +165,40 @@ sister.talk(); //'Hello, I am Mabel and I am 12.'
 Now, imagine you would test the talk method and ensure that the message logged is correct, you can use a [mock object](https://en.wikipedia.org/wiki/Mock_object) instead of the default logger and ensure that its log method is correctly called.
 
 ```javascript
+import Character from 'gravity-falls'
 
+import assert from 'assert'
+
+var loggerMock = {
+	history: [],
+	log: function() {
+		loggerMock.history.push(...arguments);
+	}
+};
+
+console.log('Character test suite');
+
+	let prettyGirl = new Character({
+		name: 'Wendy',
+		age: 15
+	}).inject({
+		logger: loggerMock
+	});
+
+	assert(loggerMock.history.length === 0);
+
+	console.log('\tIf a Character talk,, he must say "Hello", his name and his age.');
+	prettyGirl.talk();
+
+	assert(loggerMock.history.length === 1);
+	assert(loggerMock.history[0] === 'Hello, I am Wendy and I am 15.');
+
+console.log('Character test suite passed');
 ```
 
 - [Custom factory usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/custom-factory-usage.js)
 
-Also, you could just want to change the behaviour (the example just double the log, but a real use case could be to inject a logger which write the logs in file... or whatever...).
+Also, you could just want to change the behaviour of the class (the following example just double the log, but a real use case could be to inject a logger which write the logs in file... or whatever...).
 
 ```javascript
 import Character from 'gravity-falls'
@@ -189,7 +219,10 @@ let uncles = TweenBrothers({
 	age: 'old'
 });
 
-uncles.talk(); //'Hello, I am Stanley/Stanford and I am old.'
+uncles.talk(); 
+
+//'Hello, I am Stanley/Stanford and I am old.'
+//'Hello, I am Stanley/Stanford and I am old.'
 ```
 
 - [Usage with inheritance](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/usage-with-inheritance.js)
