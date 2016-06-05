@@ -1,6 +1,7 @@
-// gravity-falls/index.js
+// gravity-falls/character.js
 // or gravity-falls/class/character.js
-// or something like that, write it in the documentation 
+// or gravity-falls/index.js
+// or something similar, according to the module complexity
 
 import assert from 'assert'
 
@@ -16,12 +17,10 @@ class Character{
 		});
 	}
 
-	//Avoid using default dependencies
-	//The default factory set them for you
 	inject({
 		logger
 	}){
-		//Ensure that each injected dependency implement the needed interface
+		//Ensure that each injected dependency implement the required interface
 		assert(typeof logger === 'object');
 		assert(typeof logger.log === 'function');
 

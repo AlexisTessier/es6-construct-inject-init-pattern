@@ -1,4 +1,4 @@
-import Character from 'gravity-falls'
+import Character from 'gravity-falls/character'
 import characterInjection from 'gravity-falls/injection/character'
 
 let brother = new Character({

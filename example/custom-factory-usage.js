@@ -1,3 +1,7 @@
+
+// the following example simply repeat the log,
+// but a real use case could be to inject a logger which write the logs in files
+
 import Character from 'gravity-falls'
 
 function TweenBrothers() {

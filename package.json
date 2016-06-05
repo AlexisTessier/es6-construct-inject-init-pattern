@@ -1,6 +1,6 @@
 {
   "name": "construct-inject-init",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A dependency injection pattern",
   "main": "index.js",
   "directories": {

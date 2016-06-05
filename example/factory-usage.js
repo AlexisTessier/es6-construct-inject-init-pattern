@@ -1,4 +1,4 @@
-import Character from 'gravity-falls/factory'
+import Character from 'gravity-falls/factory/character'
 
 let sister = Character({
 	name: "Mabel",

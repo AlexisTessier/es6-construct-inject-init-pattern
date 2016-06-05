@@ -3,7 +3,6 @@
 A pattern about how to write classes, and deal with dependency injection. Actually, it's more an implementation guideline.
 
 ***Author note:***
-*I'm still experimenting this pattern.*
 *Examples and implementation details are written in ES6 but the pattern is declinable in others programming languages I guess.*
 
 ##Purpose
@@ -17,11 +16,11 @@ The goal of this pattern is to define a simple way to implement dependency injec
 	The following article is the best explanation I have found about dependency injection and its purpose.
 	[http://www.jamesshore.com/Blog/Dependency-Injection-Demystified.html](http://www.jamesshore.com/Blog/Dependency-Injection-Demystified.html)
 
-	In brief, dependency injection should be used to allow to override the behaviour of some components, and this is usefull when you want to do tests (but even without test, allow more modularity is always a good thing)
+	In brief, dependency injection should be used to allow to override the behaviour of some components, and this is usefull when you want to do tests (and even without test, allow more modularity is always a good thing)
 
 ###Pattern explanation
 
-The Construct Inject Init pattern is based on the use of 3 distincts methods :
+The Construct Inject Init pattern is based on the use of 3 distinct methods :
 - **The constructor method**: 
 	This is just the basic constructor of a class. It should be as simple as possible. Use it to set instance parameters and defaults, avoid loud processing and operations which needs an injected dependency.
 
@@ -46,20 +45,20 @@ Injected dependencies are values that could have a sense even in a more global c
 
 ###Construct Inject Init and factory
 
-- Each class should have a related default factory function which accepts parameters, creates a instance using these parameters, then injects default dependencies in the instance, and finaly returns the instance.
+- Each class should have a related default factory function which accepts parameters, creates an instance using these parameters, then injects default dependencies in the instance, and finally returns the instance.
 - Default factory methods should be accessible easily, via a path of kind: *module-name/factory* or *module-name/factory/class-name* if the module provides several classes.
 
 ###Example
 
-- [Class definition](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/class-definition.js)
+###### [Class definition](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/class-definition.js)
 
-Let's define a class with a talk method which need a logger object to log a message.
+Let's define a naive class with a talk method and which need a logger object to log a message.
 
 ```javascript
 {{& example.classDefinition }}
 ```
 
-- [Default dependencies definition](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/default-dependencies-definition.js)
+###### [Default dependencies definition](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/default-dependencies-definition.js)
 
 Providing a default behaviour is important.
 
@@ -67,7 +66,7 @@ Providing a default behaviour is important.
 {{& example.defaultDependenciesDefinition }}
 ```
 
-- [Basic usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/basic-usage.js)
+###### [Basic usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/basic-usage.js)
 
 Note that having to manually inject dependencies is not convenient a lot for an user... it should be done just in factories methods.
 
@@ -75,7 +74,7 @@ Note that having to manually inject dependencies is not convenient a lot for an 
 {{& example.basicUsage }}
 ```
 
-- [Default factory definition](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/default-factory-definition.js)
+###### [Default factory definition](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/default-factory-definition.js)
 
 Using a factory is more convenient than manually inject the dependencies.
 
@@ -83,29 +82,29 @@ Using a factory is more convenient than manually inject the dependencies.
 {{& example.defaultFactoryDefinition }}
 ```
 
-- [Factory usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/factory-usage.js)
+###### [Factory usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/factory-usage.js)
 
 ```javascript
 {{& example.factoryUsage }}
 ```
 
-- [Testing purpose](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/testing-purpose.js)
+###### [Testing purpose](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/testing-purpose.js)
 
-Now, imagine you would test the talk method and ensure that the message logged is correct, you can use a [mock object](https://en.wikipedia.org/wiki/Mock_object) instead of the default logger and ensure that its log method is correctly called.
+Now, imagine you would test the talk method and ensure that the logged message is correct, you can use a [mock object](https://en.wikipedia.org/wiki/Mock_object) instead of the default logger and ensure that its log method is correctly called.
 
 ```javascript
 {{& example.testingPurpose }}
 ```
 
-- [Custom factory usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/custom-factory-usage.js)
+###### [Custom factory usage](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/custom-factory-usage.js)
 
-Also, you could just want to change the behaviour of the class (the following example simply repeat the log, but a real use case could be to inject a logger which write the logs in files... or whatever...).
+Also, you could just want to change the behaviour of the class.
 
 ```javascript
 {{& example.customFactoryUsage }}
 ```
 
-- [Usage with inheritance](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/usage-with-inheritance.js)
+###### [Usage with inheritance](https://github.com/AlexisTessier/es6-construct-inject-init-pattern/blob/master/example/usage-with-inheritance.js)
 
 ```javascript
 {{& example.usageWithInheritance }}

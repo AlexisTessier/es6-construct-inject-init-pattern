@@ -1,6 +1,6 @@
 // gravity-falls/factory.js
 // or gravity-falls/factory/character.js
-// or something like that, write it in the documentation 
+// or something similar, according to the module complexity
 
 import Character from './index'
 import characterInjection from './injection/character'
