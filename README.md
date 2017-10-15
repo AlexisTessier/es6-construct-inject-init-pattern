@@ -1,5 +1,9 @@
 # Construct Inject Init
 
+![Project Status : deprecated](https://img.shields.io/badge/Project%20Status-deprecated-red.svg)
+
+**This module/pattern is currently deprecated. It was an attempt to understand what is exactly the dependencies injection. [This video from Fun Fun Function](https://www.youtube.com/watch?v=0X1Ns2NRfks) is far more effective to achieve this goal (and provides a simpler and better pattern)**
+
 A pattern about how to write classes, and deal with dependency injection. Actually, it's more an implementation guideline.
 
 ***Author note:***
